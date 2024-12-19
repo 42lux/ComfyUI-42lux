@@ -37,8 +37,8 @@ class ModelSamplingFluxNormalized:
             }
         }
 
-    RETURN_TYPES = ("MODEL",)
-    RETURN_NAMES = ("model",)
+    RETURN_TYPES = ("MODEL", "LATENT")
+    RETURN_NAMES = ("model", "latent")
     FUNCTION = "patch"
     CATEGORY = "42lux"
 
@@ -65,4 +65,4 @@ class ModelSamplingFluxNormalized:
         model_sampling = ModelSamplingAdvanced(model.model.model_config)
         model_sampling.set_parameters(shift=shift)
         m.add_object_patch("model_sampling", model_sampling)
-        return (m,)
+        return (m, latent)
